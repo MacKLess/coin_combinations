@@ -1,24 +1,24 @@
 class Change
   def coins(change)
-    def quarters(change)
-      if change >= 25
-        quarter_num = (change / 25).floor
+    pocket_book = change
+    change_array = [0,0,0,0]
+    while (pocket_book > 0) do
+      if pocket_book >= 25
+        pocket_book -=25
+        change_array[0] += 1
+      elsif pocket_book >= 10
+        pocket_book -= 10
+        change_array[1] += 1
+      elsif pocket_book >= 5
+        pocket_book -= 5
+        change_array[2] += 1
+      else pocket_book >= 1
+        pocket_book -= 1
+        change_array[3] += 1
       end
     end
-    def dimes(change)
-      if change >= 10
-        dime_num = (change / 10).floor
-      end
-    end
-    def nickels(change)
-      if change >= 5
-        nickel_num = (change / 5).floor
-      end
-    end
-    def pennies(change)
-      if change >= 1
-        pennies_num = change
-      end
-    end
+    change_array
   end
 end
+
+puts "Please enter an amount of cents below 100"
